@@ -29,7 +29,7 @@ func CreateTimelogEndPoint(w http.ResponseWriter, r *http.Request) {
 	_ = json.NewDecoder(r.Body).Decode(&timelog)
 	timelog.ID = strconv.Itoa(rand.Intn(1000000))
 	timelogs = append(timelogs, timelog)
-	json.NewEncoder(w).Encode(&Timelog(timelog))
+	json.NewEncoder(w).Encode(timelog)
 }
 
 func FindTimelogByDate(w http.ResponseWriter, r *http.Request) {
