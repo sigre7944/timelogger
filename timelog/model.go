@@ -1,7 +1,9 @@
-package models
+package timelog
+
+import "gopkg.in/mgo.v2/bson"
 
 type Timelog struct {
-	ID string `json:"_id" binding:"required"`
+	ID bson.ObjectId `json:"_id" binding:"required"`
 	// Year      int    `json:"year"`
 	// Month     int    `json:"month"`
 	Day string `json:"day" binding:"required"`

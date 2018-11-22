@@ -3,7 +3,7 @@ package dao
 import (
 	"log"
 
-	. "github.com/user/timelogger2/models"
+	. "github.com/user/timelogger2/timelog"
 	mgo "gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -16,7 +16,7 @@ type TimelogDAO struct {
 var db *mgo.Database
 
 const (
-	COLLECTION = "timelogs"
+	COLLECTION = "timelog"
 )
 
 func (t *TimelogDAO) Connect() {
@@ -33,7 +33,7 @@ func (t *TimelogDAO) FindAll() ([]Timelog, error) {
 	return timelogs, err
 }
 
-func (t *TimelogDAO) FindByDate(date int) (Timelog, error) {
+func (t *TimelogDAO) FindByDate(date string) (Timelog, error) {
 	var timelog Timelog
 	err := db.C(COLLECTION).Find(bson.M{"day": date}).All(&timelog)
 	return timelog, err
